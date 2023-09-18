@@ -22,7 +22,8 @@
     <script>
         // Step 1: Create variables 'form', 'todosList', 'button', 'input'
         // to target the form, unordered list, button, and input.
-        const form = document.getElementById('form');
+        console.log('Hello World');
+        const form = document.querySelector('form');
         const todosList = document.querySelector('ul');
         const button = document.getElementById('clear');
         const input = document.getElementById('user-todo');
@@ -37,7 +38,16 @@
             e.preventDefault();
             todoMaker(input.value);
             input.value = '';
-        })
+        });
+
+        // Step 3: Create a todoMaker function that crates 'li' elements with thetext user provides
+        // from their form and appends it to the 'ul'.
+        function todoMaker(text)
+        {
+            var item = document.createElement('li');
+            item.textContent = text;
+            todosList.appendChild(item);
+        }
     </script>
 </body>
 </html>
