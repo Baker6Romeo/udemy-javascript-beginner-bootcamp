@@ -26,6 +26,18 @@
         const todosList = document.querySelector('ul');
         const button = document.getElementById('clear');
         const input = document.getElementById('user-todo');
+
+        // Step 2: Attach an event listener to the 'form' variable with 'addEventListener'
+        // to capture the user input on the 'submit' event.
+        // Make sure to run 'preventDefault()' on the event when the form is submitted.
+        // Call a 'todoMaker' function which we will create in step three and pass to it
+        // the 'input' variable and target the value the user has provided with 'input.value'.
+        // Finally, set the 'input.value' to an empty string.
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            todoMaker(input.value);
+            input.value = '';
+        })
     </script>
 </body>
 </html>
