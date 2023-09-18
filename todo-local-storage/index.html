@@ -22,7 +22,6 @@
     <script>
         // Step 1: Create variables 'form', 'todosList', 'button', 'input'
         // to target the form, unordered list, button, and input.
-        console.log('Hello World');
         const form = document.querySelector('form');
         const todosList = document.querySelector('ul');
         const button = document.getElementById('clear');
@@ -48,6 +47,19 @@
             item.textContent = text;
             todosList.appendChild(item);
         }
+
+        // Step 4: Attach an event listener to the 'clear all' button listening for
+        // a user click.
+        // In the function us a while loop checking to see whether there is an li
+        // element as a child of the 'ul' tag. In the code block use the removeChild()
+        // DOM method to remove that 'li' using the firstChild property.
+
+        button.addEventListener('click', () => {
+            while( todosList.firstChild )
+            {
+                todosList.removeChild(todosList.firstChild);
+            }
+        });
     </script>
 </body>
 </html>
