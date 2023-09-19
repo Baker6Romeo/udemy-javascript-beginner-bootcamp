@@ -28,7 +28,7 @@
 
     // Declare variable `todosArray` to hold our todos.
     // set our `todosArray` to an empty array.
-    var todosArray = [];
+    var todosArray = localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')): [];
 
     // use localStorage setItem() method to set `todos` to a string with `JSON.stringify()`
       // JSON.stringify() if used because localStorage works with strings. This is how
@@ -63,6 +63,9 @@
     }
 
     // Loop through localStorage when a user first opens a page and run the todoMaker function
+    for(var i = 0; i < storage.length; i++) {
+        todoMaker(storage[i]);
+    }
 
     button.addEventListener('click', function() {
 
