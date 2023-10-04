@@ -63,4 +63,5 @@ function resetGuess() {
   for(let i = 0; i < selected.length; i++) {
     selected[i].classList.remove('selected');
   }
+  selected = document.querySelectorAll('.selected');
 }
