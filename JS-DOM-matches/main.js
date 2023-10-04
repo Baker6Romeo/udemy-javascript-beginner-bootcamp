@@ -31,6 +31,7 @@ for(i=0; i < gameGrid.length; i++) {
 
 var counter = 0;
 var previousClick = null;
+const delay = 1000;
 var selected = document.querySelectorAll('.selected')
 
 grid.addEventListener('click', (e) => {
@@ -45,10 +46,10 @@ grid.addEventListener('click', (e) => {
       selected = document.querySelectorAll('.selected')
       if(isAMatch(selected[0], selected[1])) {
         for(let i = 0; i < selected.length; i++) {
-          selected[i].classList.add('matched');
+          setTimeout(() => selected[i].classList.add('matched'), delay);
         }
       }
-      resetGuess();
+      setTimeout(resetGuess, delay);
     }
   }
 });
