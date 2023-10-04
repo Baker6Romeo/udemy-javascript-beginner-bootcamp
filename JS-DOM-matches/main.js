@@ -25,7 +25,13 @@ for(i=0; i < gameGrid.length; i++) {
     var card = document.createElement('div');
     card.setAttribute('class', 'card');
     card.dataset.name = gameGrid[i].name;
-    card.style.backgroundImage = `url(${gameGrid[i].img})`;
+    var front = document.createElement('div');
+    front.classList.add('front');
+    card.append(front);
+    var back = document.createElement('div');
+    back.classList.add('back');
+    back.style.backgroundImage = `url(${gameGrid[i].img})`;
+    card.append(back);
     grid.appendChild(card);
 }
 
@@ -35,18 +41,19 @@ const delay = 1000;
 var selected = document.querySelectorAll('.selected')
 
 grid.addEventListener('click', (e) => {
-  if(e.target != previousClick && !e.target.classList.contains('matched')) {
-    if(counter < 2 && e.target.classList.contains('card')) {
+  var parentNode = e.target.parentNode
+  if(parentNode != previousClick && !parentNode.classList.contains('matched')) {
+    if(counter < 2 && parentNode.classList.contains('card')) {
       counter++;
-      let card = e.target;
+      let card = parentNode;
     card.classList.add('selected');
-    previousClick = e.target;
+    previousClick = parentNode;
     }
     if(counter === 2) {
       selected = document.querySelectorAll('.selected')
       if(isAMatch(selected[0], selected[1])) {
         for(let i = 0; i < selected.length; i++) {
-          setTimeout(() => selected[i].classList.add('matched'), delay);
+          setTimeout(() => selected[i].firstChild.classList.add('matched'), delay);
         }
       }
       setTimeout(resetGuess, delay);
