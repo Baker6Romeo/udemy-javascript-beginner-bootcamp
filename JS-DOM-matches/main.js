@@ -13,15 +13,17 @@ var cardsArray = [
     {    'name': 'Wordpress',    'img': 'https://github.com/robgmerrill/img/blob/master/wordpress-logo.png?raw=true',  },
   ];
 
+var gameGrid = cardsArray.concat(cardsArray);
+
 const game = document.getElementById('game-board');
 var grid = document.createElement('section');
 grid.classList.add('grid');
 game.appendChild(grid);
 
-for(i=0; i < cardsArray.length; i++) {
+for(i=0; i < gameGrid.length; i++) {
     var card = document.createElement('div');
     card.setAttribute('class', 'card');
-    card.dataset.name = cardsArray[i].name;
-    card.style.backgroundImage = `url(${cardsArray[i].img})`;
+    card.dataset.name = gameGrid[i].name;
+    card.style.backgroundImage = `url(${gameGrid[i].img})`;
     grid.appendChild(card);
 }
