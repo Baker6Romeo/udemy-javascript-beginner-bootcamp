@@ -29,9 +29,20 @@ for(i=0; i < gameGrid.length; i++) {
     grid.appendChild(card);
 }
 
+var counter = 0;
+
 grid.addEventListener('click', (e) => {
-  if(e.target.classList.contains('card')) {
+  if(counter < 2 && e.target.classList.contains('card')) {
+    counter++;
     let card = e.target;
   card.classList.add('selected');
   }
+  if(counter === 2) {
+    selected = document.querySelectorAll('.selected')
+    console.log(isAMatch(selected[0], selected[1]));
+  }
 });
+
+function isAMatch(card1, card2) {
+  return card1.dataset.name === card2.dataset.name;
+}
