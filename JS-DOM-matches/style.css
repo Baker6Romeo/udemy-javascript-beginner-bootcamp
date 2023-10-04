@@ -27,6 +27,6 @@ body {
   width: 150px;
 }
 
-.card img {
-    object-fit: contain;
+.selected {
+  border: 4px solid blue;
 }

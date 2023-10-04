@@ -28,3 +28,10 @@ for(i=0; i < gameGrid.length; i++) {
     card.style.backgroundImage = `url(${gameGrid[i].img})`;
     grid.appendChild(card);
 }
+
+grid.addEventListener('click', (e) => {
+  if(e.target.classList.contains('card')) {
+    let card = e.target;
+  card.classList.add('selected');
+  }
+});
