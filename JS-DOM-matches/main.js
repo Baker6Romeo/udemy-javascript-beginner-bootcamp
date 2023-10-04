@@ -14,6 +14,7 @@ var cardsArray = [
   ];
 
 var gameGrid = cardsArray.concat(cardsArray);
+gameGrid.sort(() => 0.5-Math.random());
 
 const game = document.getElementById('game-board');
 var grid = document.createElement('section');
