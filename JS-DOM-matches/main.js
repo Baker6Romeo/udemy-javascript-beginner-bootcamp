@@ -30,19 +30,37 @@ for(i=0; i < gameGrid.length; i++) {
 }
 
 var counter = 0;
+var previousClick = null;
+var selected = document.querySelectorAll('.selected')
 
 grid.addEventListener('click', (e) => {
-  if(counter < 2 && e.target.classList.contains('card')) {
-    counter++;
-    let card = e.target;
-  card.classList.add('selected');
-  }
-  if(counter === 2) {
-    selected = document.querySelectorAll('.selected')
-    console.log(isAMatch(selected[0], selected[1]));
+  if(e.target != previousClick && !e.target.classList.contains('matched')) {
+    if(counter < 2 && e.target.classList.contains('card')) {
+      counter++;
+      let card = e.target;
+    card.classList.add('selected');
+    previousClick = e.target;
+    }
+    if(counter === 2) {
+      selected = document.querySelectorAll('.selected')
+      if(isAMatch(selected[0], selected[1])) {
+        for(let i = 0; i < selected.length; i++) {
+          selected[i].classList.add('matched');
+        }
+      }
+      resetGuess();
+    }
   }
 });
 
 function isAMatch(card1, card2) {
   return card1.dataset.name === card2.dataset.name;
+}
+
+function resetGuess() {
+  counter = 0;
+  previousClick = null;
+  for(let i = 0; i < selected.length; i++) {
+    selected[i].classList.remove('selected');
+  }
 }
