@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <title>Broomstick Animation</title>
+ 
+  <style>
+    body {
+      padding: 50px;
+    }
+    #container {
+      background-color: skyblue;
+      height: 300px;
+      text-align: center;
+    }
+    #broom {
+        animation-name: fly;
+        animation-duration: 5s;
+        animation-iteration-count: 3;
+}
+
+    @keyframes fly {
+        0% {
+            transform: translateY(20px);
+        }
+        50% {
+            transform: translateY(60px);
+        }
+        100% {
+            transform: translateY(20px);
+        }
+    }
+  </style>
+</head>
+ 
+<body>
+  <div id="container">
+    <img id="broom" src="https://github.com/robgmerrill/online-course-images/blob/master/broom.png?raw=true"/>
+  </div>
+</body>
+ 
+</html>
