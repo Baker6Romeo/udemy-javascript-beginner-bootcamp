@@ -1,0 +1,27 @@
+div {
+    background-color: red;
+    height: 100px;
+    margin: 10px;
+    width: 100px;
+    
+    transition-property: width;
+    transition-duration: 3s;
+}
+div:hover {
+    width: 400px;
+}
+
+#1 {
+    transition-timing-function: linear;
+}
+
+#2 {
+    transition-timing-function: ease-in-out;
+}
+#3 {
+    transition-timing-function: ease-in;
+}
+
+#4 {
+    transition-timing-function: ease-out;
+}
