@@ -7,3 +7,7 @@
     align-items: center;
     justify-content: center;
   }
+  
+  #hexagon:hover {
+    transform: scale3d(1.2, 1.2, 1) rotate(45deg);  
+  }
