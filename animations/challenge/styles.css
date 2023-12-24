@@ -1,0 +1,54 @@
+body {
+    text-align: center;
+}
+p {
+    animation-name: swipe;
+    animation-delay: 5s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+#ball {
+    animation-name: flicker;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    height: 100px;
+    width: 100px;
+    margin: auto auto;
+    border-radius: 50%;
+}
+
+#title {    
+    animation-name: dropdown;
+    animation-duration: 1s;
+}
+
+@keyframes dropdown {
+    0% {
+        transform: translateY(-10vh);
+    }
+
+    100% {
+        transform: translateY(0px)
+    }
+}
+
+@keyframes flicker {
+    0% {
+        background-color: white;
+    }
+    50% {
+        background-color: blue;
+    }
+    100% {
+        background-color: white;
+    }
+}
+
+@keyframes swipe {
+    0% {
+        transform: translateX(0vh)
+    }
+    100% {
+        transform: translateX(150vh);
+    }
+}
