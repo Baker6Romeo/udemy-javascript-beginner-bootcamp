@@ -8,12 +8,11 @@ p {
     animation-fill-mode: forwards;
 }
 #ball {
-    animation-name: flicker;
-    animation-duration: 6s;
-    animation-iteration-count: infinite;
+    animation: flicker alternate 2s infinite linear;
+    background-color: blue;
     height: 100px;
     width: 100px;
-    margin: auto auto;
+    margin: 100px auto;
     border-radius: 50%;
 }
 
@@ -34,13 +33,13 @@ p {
 
 @keyframes flicker {
     0% {
-        background-color: white;
+        opacity: 1;
     }
     50% {
-        background-color: blue;
+        opacity: .5;
     }
     100% {
-        background-color: white;
+        opacity: 0;
     }
 }
 
