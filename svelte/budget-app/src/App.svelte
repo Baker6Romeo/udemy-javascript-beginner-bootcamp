@@ -1,11 +1,11 @@
 <script>
+	import expenseData from "./expenses"
 	import Navbar from "./Navbar.svelte";
-	import Title from "./Title.svelte";
+
+	let expenses = [...expenseData];
 </script>
 
 <!-- <style></style> -->
 <!-- CSS/STYLING -->
 
 <Navbar/>
-<Title title="add expense"/>
-<Title title="expense list"/>
