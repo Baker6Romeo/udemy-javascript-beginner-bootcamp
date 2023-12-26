@@ -1,5 +1,6 @@
 <script>
 	import expenseData from "./expenses"
+	import ExpensesList from "./ExpensesList.svelte"
 	import Navbar from "./Navbar.svelte";
 
 	let expenses = [...expenseData];
@@ -9,3 +10,4 @@
 <!-- CSS/STYLING -->
 
 <Navbar/>
+<ExpensesList expenses = {expenses}/>
