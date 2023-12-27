@@ -1,8 +1,10 @@
 <script>
+  import { getContext } from "svelte";
   export let id;
   export let name = "";
   export let amount = 0;
-  export let removeExpense;
+  const removeExpense = getContext("removeExpense");
+  console.log(removeExpense);
 
   let displayAmount = false;
 
