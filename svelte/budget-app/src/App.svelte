@@ -3,12 +3,16 @@
   // components
   import ExpensesList from "./ExpensesList.svelte";
   import Navbar from "./Navbar.svelte";
+  import Total from "./Total.svelte";
 
   // data
   import expenseData from "./expenses";
 
   // variables
   let expenses = [...expenseData];
+  $: total = expenses.reduce((acc, curr) => {
+    return (acc += curr.amount);
+  }, 0);
 
   // functions
   function removeExpense(id) {
@@ -25,6 +29,7 @@
 
 <Navbar />
 <main class="content">
+  <Total title="Total Expenses" {total} />
   <ExpensesList {expenses} />
   <button
     type="button"
