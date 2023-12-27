@@ -1,16 +1,24 @@
 <script>
     export let id;
-    export let name;
-    export let amount;
+    export let name = '';
+    export let amount = 0;
 </script>
 
-<style>
-    h2{
-        text-transform: capitalize;
-    }
-</style>
-
-<div>
-    <h2>title: {name}</h2>
-    <h2>amount: {amount}</h2>
-</div>
+<article class="single-expense">
+    <div class="expense-info">
+        <h2>{name}
+            <button class="amount-btn">
+                <i class="fas fa-caret-down"/>
+            </button>
+        </h2>
+        <h4>amount: ${amount}</h4>
+    </div>
+    <div class="expense-buttons">
+        <button class="expense-btn edit-btn">
+            <i class="fas fa-pen"/>
+        </button>
+        <button class="expense-btn delete-btn">
+            <i class="fas fa-trash"/>
+        </button>
+    </div>
+</article>
