@@ -1,6 +1,7 @@
 <script>
   import { setContext } from "svelte";
   // components
+  import ExpenseForm from "./ExpenseForm.svelte";
   import ExpensesList from "./ExpensesList.svelte";
   import Navbar from "./Navbar.svelte";
   import Total from "./Total.svelte";
@@ -29,6 +30,7 @@
 
 <Navbar />
 <main class="content">
+  <ExpenseForm />
   <Total title="Total Expenses" {total} />
   <ExpensesList {expenses} />
   <button
