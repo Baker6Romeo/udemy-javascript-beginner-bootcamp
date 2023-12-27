@@ -4,7 +4,6 @@
   export let name = "";
   export let amount = 0;
   const removeExpense = getContext("removeExpense");
-  console.log(removeExpense);
 
   let displayAmount = false;
 
