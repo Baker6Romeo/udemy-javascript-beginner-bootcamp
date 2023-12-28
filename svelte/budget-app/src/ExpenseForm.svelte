@@ -2,9 +2,9 @@
   import Title from "./Title.svelte";
 
   export let addExpense;
+  export let amount = null;
+  export let name = "";
 
-  let name = "";
-  let amount = null;
   $: isEmpty = !amount || !name;
 
   function handleSubmit() {
