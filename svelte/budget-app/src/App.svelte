@@ -16,11 +16,15 @@
   }, 0);
 
   // functions
-  function removeExpense(id) {
-    expenses = expenses.filter((expense) => expense.id != id);
+  function addExpense({ name, amount }) {
+    let expense = { id: Math.random() * Date.now(), name, amount };
+    expenses = [expense, ...expenses];
   }
   function clearExpenses() {
     expenses = [];
+  }
+  function removeExpense(id) {
+    expenses = expenses.filter((expense) => expense.id != id);
   }
   setContext("removeExpense", removeExpense);
 </script>
@@ -30,7 +34,7 @@
 
 <Navbar />
 <main class="content">
-  <ExpenseForm />
+  <ExpenseForm {addExpense} />
   <Total title="Total Expenses" {total} />
   <ExpensesList {expenses} />
   <button
