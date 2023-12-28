@@ -15,6 +15,10 @@
     return (acc += curr.amount);
   }, 0);
 
+  let setId = null;
+  let setName = "";
+  let setAmount = null;
+
   // functions
   function addExpense({ name, amount }) {
     let expense = { id: Math.random() * Date.now(), name, amount };
@@ -26,7 +30,15 @@
   function removeExpense(id) {
     expenses = expenses.filter((expense) => expense.id != id);
   }
+  function setModifyExpense(id) {
+    let expense = expenses.find((expense) => expense.id === id);
+
+    setId = expense.id;
+    setName = expense.name;
+    setAmount = expense.amount;
+  }
   setContext("removeExpense", removeExpense);
+  setContext("setExpense", setModifyExpense);
 </script>
 
 <!-- <style></style> -->
