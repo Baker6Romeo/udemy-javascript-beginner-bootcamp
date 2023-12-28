@@ -11,13 +11,15 @@
 
   // variables
   let expenses = [...expenseData];
-  $: total = expenses.reduce((acc, curr) => {
-    return (acc += curr.amount);
-  }, 0);
 
   let setId = null;
   let setName = "";
   let setAmount = null;
+
+  $: isEditing = setId ? true : false;
+  $: total = expenses.reduce((acc, curr) => {
+    return (acc += curr.amount);
+  }, 0);
 
   // functions
   function addExpense({ name, amount }) {
@@ -26,6 +28,9 @@
   }
   function clearExpenses() {
     expenses = [];
+  }
+  function editExpense({ amount, name }) {
+    console.log(amount, name);
   }
   function removeExpense(id) {
     expenses = expenses.filter((expense) => expense.id != id);
@@ -46,7 +51,13 @@
 
 <Navbar />
 <main class="content">
-  <ExpenseForm {addExpense} name={setName} amount={setAmount} />
+  <ExpenseForm
+    {addExpense}
+    {editExpense}
+    name={setName}
+    amount={setAmount}
+    {isEditing}
+  />
   <Total title="Total Expenses" {total} />
   <ExpensesList {expenses} />
   <button

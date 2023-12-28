@@ -3,12 +3,19 @@
 
   export let addExpense;
   export let amount = null;
+  export let editExpense;
+  export let isEditing;
   export let name = "";
 
   $: isEmpty = !amount || !name;
 
   function handleSubmit() {
-    addExpense({ name, amount });
+    if (isEditing) {
+      console.log(amount, name);
+      editExpense({ amount, name });
+    } else {
+      addExpense({ name, amount });
+    }
     clearForm();
   }
 
@@ -39,7 +46,12 @@
       class="btn btn-block"
       type="submit"
       disabled={isEmpty}
-      class:disabled={isEmpty}>add expense</button
+      class:disabled={isEmpty}
+      >{#if isEditing}
+        save changes
+      {:else}
+        add expense
+      {/if}</button
     >
   </form>
 </section>
