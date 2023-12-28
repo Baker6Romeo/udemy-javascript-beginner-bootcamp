@@ -1,11 +1,14 @@
 <script>
+  import { empty } from "svelte/internal";
   import Title from "./Title.svelte";
 
   let name = "";
   let amount = null;
+  $: isEmpty = !amount || !name;
 </script>
 
 <section class="form">
+  <p>{isEmpty}</p>
   <Title title="add expense" />
   <button class="close-btn" type="button"
     ><i class="fas fa-times" />close</button
@@ -19,7 +22,14 @@
       <label for="amount">amount</label>
       <input type="number" id="amount" bind:value={amount} />
     </div>
-    <p class="form-empty">please fill out all form fields</p>
-    <button class="btn btn-block" type="submit">add expense</button>
+    {#if isEmpty}
+      <p class="form-empty">please fill out all form fields</p>
+    {/if}
+    <button
+      class="btn btn-block"
+      type="submit"
+      disabled="isEmpty"
+      class:disabled={isEmpty}>add expense</button
+    >
   </form>
 </section>
