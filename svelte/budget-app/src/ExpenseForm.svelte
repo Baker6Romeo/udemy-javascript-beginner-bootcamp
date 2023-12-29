@@ -1,4 +1,5 @@
 <script>
+  import { getContext } from "svelte";
   import Title from "./Title.svelte";
 
   export let addExpense;
@@ -6,6 +7,8 @@
   export let editExpense;
   export let isEditing;
   export let name = "";
+
+  const hideForm = getContext("hideForm");
 
   $: isEmpty = !amount || !name;
 
@@ -23,11 +26,16 @@
     name = "";
     amount = null;
   }
+
+  function closeForm() {
+    clearForm();
+    hideForm();
+  }
 </script>
 
 <section class="form">
   <Title title="add expense" />
-  <button class="close-btn" type="button"
+  <button class="close-btn" type="button" on:click={closeForm}
     ><i class="fas fa-times" />close</button
   >
   <form class="expense-form" on:submit|preventDefault={handleSubmit}>

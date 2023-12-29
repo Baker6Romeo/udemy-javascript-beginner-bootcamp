@@ -16,6 +16,8 @@
   let setName = "";
   let setAmount = null;
 
+  let isFormOpen = false;
+
   $: isEditing = setId ? true : false;
   $: total = expenses.reduce((acc, curr) => {
     return (acc += curr.amount);
@@ -27,14 +29,22 @@
     let expense = { id: Math.random() * Date.now(), name, amount };
     expenses = [expense, ...expenses];
   }
+
   function clearExpenses() {
     expenses = [];
   }
+
   function clearSetVariables() {
     setAmount = null;
     setId = null;
     setName = "";
   }
+
+  function hideForm() {
+    isFormOpen = false;
+    clearSetVariables();
+  }
+
   function editExpense({ amount, name }) {
     expenses = expenses.map((expense) => {
       return expense.id === setId
@@ -43,9 +53,11 @@
     });
     clearSetVariables();
   }
+
   function removeExpense(id) {
     expenses = expenses.filter((expense) => expense.id != id);
   }
+
   function setModifyExpense(id) {
     let expense = expenses.find((expense) => expense.id === id);
 
@@ -53,8 +65,15 @@
     setName = expense.name;
     setAmount = expense.amount;
   }
+
+  function showForm() {
+    isFormOpen = true;
+  }
+
+  setContext("hideForm", hideForm);
   setContext("removeExpense", removeExpense);
   setContext("setExpense", setModifyExpense);
+  setContext("showForm", showForm);
 </script>
 
 <!-- <style></style> -->
@@ -62,13 +81,15 @@
 
 <Navbar />
 <main class="content">
-  <ExpenseForm
-    {addExpense}
-    {editExpense}
-    name={setName}
-    amount={setAmount}
-    {isEditing}
-  />
+  {#if isFormOpen}
+    <ExpenseForm
+      {addExpense}
+      {editExpense}
+      name={setName}
+      amount={setAmount}
+      {isEditing}
+    />
+  {/if}
   <Total title="Total Expenses" {total} />
   <ExpensesList {expenses} />
   <button
