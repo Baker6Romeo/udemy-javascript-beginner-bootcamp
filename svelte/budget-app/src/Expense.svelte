@@ -5,14 +5,8 @@
   export let amount = 0;
   const removeExpense = getContext("removeExpense");
   const setModifyExpense = getContext("setExpense");
-  const showForm = getContext("showForm");
 
   let displayAmount = false;
-
-  function editExpense(id) {
-    showForm();
-    setModifyExpense(id);
-  }
 
   function toggleAmount() {
     displayAmount = !displayAmount;
@@ -32,7 +26,7 @@
     {/if}
   </div>
   <div class="expense-buttons">
-    <button class="expense-btn edit-btn" on:click={() => editExpense(id)}>
+    <button class="expense-btn edit-btn" on:click={() => setModifyExpense(id)}>
       <i class="fas fa-pen" />
     </button>
     <button class="expense-btn delete-btn" on:click={() => removeExpense(id)}>

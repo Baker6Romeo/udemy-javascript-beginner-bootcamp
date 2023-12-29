@@ -1,7 +1,5 @@
 <script>
-  import { getContext } from "svelte";
-
-  const showForm = getContext("showForm");
+  export let showForm;
 </script>
 
 <nav class="nav">

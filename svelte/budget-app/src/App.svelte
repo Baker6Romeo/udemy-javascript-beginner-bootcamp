@@ -64,6 +64,7 @@
     setId = expense.id;
     setName = expense.name;
     setAmount = expense.amount;
+    showForm();
   }
 
   function showForm() {
@@ -79,12 +80,13 @@
 <!-- <style></style> -->
 <!-- CSS/STYLING -->
 
-<Navbar />
+<Navbar {showForm} />
 <main class="content">
   {#if isFormOpen}
     <ExpenseForm
       {addExpense}
       {editExpense}
+      {hideForm}
       name={setName}
       amount={setAmount}
       {isEditing}
