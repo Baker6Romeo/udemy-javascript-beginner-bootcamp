@@ -23,14 +23,25 @@
 
   // functions
   function addExpense({ name, amount }) {
+    console.log(setId);
     let expense = { id: Math.random() * Date.now(), name, amount };
     expenses = [expense, ...expenses];
   }
   function clearExpenses() {
     expenses = [];
   }
+  function clearSetVariables() {
+    setAmount = null;
+    setId = null;
+    setName = "";
+  }
   function editExpense({ amount, name }) {
-    console.log(amount, name);
+    expenses = expenses.map((expense) => {
+      return expense.id === setId
+        ? { ...expense, name, amount }
+        : { ...expense };
+    });
+    clearSetVariables();
   }
   function removeExpense(id) {
     expenses = expenses.filter((expense) => expense.id != id);
